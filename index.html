@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Main Styling -->
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Open Sans Font -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,900' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar">
+    </ul> <!-- End Sidebar -->
+  </nav> <!-- End Sidebar-wrapper -->
+
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-6">
+          <a href="#"><img src="images/logo.png" class="logo"></a>
+          </a>
+        </div> <!-- End Logo & Menu-Toggle -->
+      </div> <!-- End Row -->
+    </div> <!-- End Container-Fluid -->
+  </header> <!-- End Header -->
+  <hr>
+  <hr>
+  <div class="container-fluid">
+		<h1>PIB en Colombia en los Gobiernos Uribe - Santos</h1>
+		<br>
+		<h3>Participación del PIB Departamental</h3>
+		<div class="row">
+		  <div class="single-channel">
+				<div class="col-md-3 channel-bio">
+					  <div class="channel-name"><img src="images/dpto_icon.jpg"><b>TOP 5 Departamental</b></div>
+					  <hr>
+					  <p>Departamentos con la mayor actividad productiva durante los últimos 17 años</p>
+				</div><!-- End Channel-Bio -->
+				
+				<script src="//d3js.org/d3.v4.min.js"></script>
+				<div id="chart_depto"></div>
+				<svg width="800" height="400"></svg>
+					<script src="js/departamentos.js"></script>	
+				<div class="col-md-3 channel-bio">
+					<div class="channel-name"><img src="images/region_icon.jpg"><b>Participación Regional</b></div>
+					<hr>
+				  <p></p>
+				   <a href="region.html">Participación en el PIB por Regiones (Excluye a Bogotá D.C)</a> 
+				</div><!-- End Channel-Bio -->	
+				
+<!-- 				<svg width="800" height="400"></svg>
+				<div id="chart_region"></div>
+				<script src="//d3js.org/d3.v4.min.js"></script>
+				<script src="js/regiones.js"></script>	 -->			
+		  </div> <!-- End Single Channel -->		  
+		</div> <!-- End Row -->
+	</div> <!-- End Container-Fluid -->	
+  <footer>    
+    <h4>Copyright &copy; 2017</h4>
+
+  </footer> <!-- End Footer -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+
+</html>
