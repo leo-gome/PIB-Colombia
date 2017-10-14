@@ -5,12 +5,12 @@ var svg = d3.select("svg"),
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var parseTime = d3.timeParse("%Y");
-
+//David Gomez: se observar la generacion de las escalas para las diferentes dimensiones
 var x = d3.scaleTime().range([0, width]),
     y = d3.scaleLinear()
 		.range([height, 0]),
     z = d3.scaleOrdinal(d3.schemeCategory10);
-	
+// David Gomez: Se observan las condiciones para el tooltip de sobre los labels
 var tooltip = 	d3.select('body').append('div')
 					.style('position', 'absolute')
 					.style('padding', '0 10 px')
@@ -22,7 +22,8 @@ var line = d3.line()
     .curve(d3.curveBundle)
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.PIB); });	
-
+//David Gomez: en la visualizacion se presenta como porcentaje, pero los datos estan en esta unidad?
+//ya que la suma de todas las regiones esta alrededor del 10%, el resto lo aporta Bogota?
 d3.tsv("../data/regiones.tsv", type, function(error, data) {
   if (error) throw error;
 
@@ -36,7 +37,7 @@ d3.tsv("../data/regiones.tsv", type, function(error, data) {
   });
 
   x.domain(d3.extent(data, function(d) { return d.year; }));
-
+  
   y.domain([
     d3.min(dptos, function(c) { return d3.min(c.values, function(d) { return d.PIB; }); }),
     d3.max(dptos, function(c) { return d3.max(c.values, function(d) { return d.PIB; }); })
@@ -79,7 +80,8 @@ d3.tsv("../data/regiones.tsv", type, function(error, data) {
 		.on('mouseover', function (d, i) {
 			tooltip.transition()
 				.style('opacity', .9)
-			
+			//David Gomez: Observando el comportamiento tal vez seria mejor no incluir nuevamente el nombre del departamento
+	  		//ya que el tooltip esta sobre el label de la serie que es el departamanto
 			tooltip.html(d.id + " (" + d.value.PIB + " %)")
 				.style('left', (d3.event.pageX + 30) + 'px')
 				.style('top', (d3.event.pageY - 10) + 'px')
