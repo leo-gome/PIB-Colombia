@@ -44,6 +44,8 @@ d3.tsv("../data/regiones.tsv", type, function(error, data) {
 
   z.domain(dptos.map(function(c) { return c.id; }));
 
+	//David Gomez: tal vez seria interesante modificar el rango y dibujar el eje X para observar los datos
+	// de la serie de Amazonia ya que esta muy cercano a cero
   g.append("g")
       .attr("class", "axis axis--x")
       .attr("transform", "translate(0," + height + ")")
@@ -79,7 +81,8 @@ d3.tsv("../data/regiones.tsv", type, function(error, data) {
 		.on('mouseover', function (d, i) {
 			tooltip.transition()
 				.style('opacity', .9)
-			
+			//David Gomez: tal vez no es necesario incluir el nombre de la region ya que el tooltip 
+ +	  		//esta ubicado sobre el label de la serie de datos que tambien es el nombre de la region
 			tooltip.html(d.id + " (" + d.value.PIB + " %)")
 				.style('left', (d3.event.pageX + 30) + 'px')
 				.style('top', (d3.event.pageY - 10) + 'px')
@@ -89,6 +92,7 @@ d3.tsv("../data/regiones.tsv", type, function(error, data) {
 				.style('opacity', .5)
 				.style('fill', 'red')
 			})
+		//David Gomez: Se recomienda tambien ocultar el tool tip en la funcion mouse out
 		.on('mouseout', function (d, i) {
 			d3.select(this)
 				.style('opacity', 1)
