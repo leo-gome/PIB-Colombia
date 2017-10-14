@@ -36,7 +36,9 @@ d3.tsv("../data/departamentos.tsv", type, function(error, data) {
   });
 
   x.domain(d3.extent(data, function(d) { return d.year; }));
-
+	//David Gomez: para el caso de cundinamarca, no se observa muy bien el valor real
+	// ya que no se ubica el eje X, tal vez seria interesante definir el rango desde 0 
+	// para faclitar la identificacion de los valores de la serie de datos de cundinamarca.
   y.domain([
     d3.min(dptos, function(c) { return d3.min(c.values, function(d) { return d.PIB; }); }),
     d3.max(dptos, function(c) { return d3.max(c.values, function(d) { return d.PIB; }); })
@@ -44,6 +46,7 @@ d3.tsv("../data/departamentos.tsv", type, function(error, data) {
 
   z.domain(dptos.map(function(c) { return c.id; }));
 
+	
   g.append("g")
       .attr("class", "axis axis--x")
       .attr("transform", "translate(0," + height + ")")
@@ -79,7 +82,8 @@ d3.tsv("../data/departamentos.tsv", type, function(error, data) {
 		.on('mouseover', function (d, i) {
 			tooltip.transition()
 				.style('opacity', .9)
-			
+			//David Gomez: Revisar si es necesario incluir nuevamente el nombre del departamento
+	  		//si el tooltip esa definido sobre el label de los datos que es el nombre del departamento
 			tooltip.html(d.id + " (" + d.value.PIB + " %)")
 				.style('left', (d3.event.pageX + 30) + 'px')
 				.style('top', (d3.event.pageY - 10) + 'px')
@@ -89,6 +93,7 @@ d3.tsv("../data/departamentos.tsv", type, function(error, data) {
 				.style('opacity', .5)
 				.style('fill', 'red')
 			})
+			//David gomez: se deberia considerar en la funcion mouse out tambien ocultar el tooltip
 		.on('mouseout', function (d, i) {
 			d3.select(this)
 				.style('opacity', 1)
